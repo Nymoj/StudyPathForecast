@@ -1,0 +1,47 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Alef&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Alef', sans-serif;
+}
+
+.container {
+    width: 980px;
+    margin: 0 auto;
+    display: block;
+}
+
+#projectName {
+    color: #fff;
+    float: left;
+    display: table-cell;
+    text-align: center;
+}
+
+header {
+    padding: 20px 0;
+    background-color: #111;
+}
+
+nav ul {
+    display: inline-block;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 8px;
+}
+
+nav ul li a {
+    text-decoration: none;
+}
+
+nav ul li a:link {
+    color: #fff;
+}
+
+nav ul li a:hover {
+    color: #fff;
+}
