@@ -15,26 +15,12 @@ namespace StudyPathForecast
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.IsAuthenticated)
-            {
-                Response.Redirect("~/Default.aspx");
-            }
-
-            RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
+            
         }
 
         protected void RegisterUser_CreatedUser(object sender, EventArgs e)
         {
-            string continueUrl = RegisterUser.ContinueDestinationPageUrl;
-
-            FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false);
-
-            if (string.IsNullOrEmpty(continueUrl))
-            {
-                continueUrl = "~/";
-            }
-
-            Response.Redirect(continueUrl);
+            
         }
     }
 }
