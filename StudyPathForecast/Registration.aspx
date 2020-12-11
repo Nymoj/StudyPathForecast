@@ -1,21 +1,52 @@
 ﻿<%@ Page Title="הרשמה" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Registration.aspx.cs" Inherits="StudyPathForecast.Registration" %>
 
 <asp:Content runat="server" ID="head" ContentPlaceHolderID="head">
-    <link href="/Content/Registration.css" type="text/css" rel="stylesheet"/>
+    <link href="/Content/Forms.css" type="text/css" rel="stylesheet"/>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>הרשמה</h1>
+    <div class="formWrapper">
+        <h1>הרשמה</h1>
 
-    <asp:CreateUserWizard runat="server" ID="RegisterUser" EnableViewState="false" OnCreatedUser="RegisterUser_CreatedUser"
-        CreateUserButtonText="הרשמה" UserNameLabelText="שם משתמש" PasswordLabelText="סיסמה"
-        ConfirmPasswordLabelText="אימות סיסמה" EmailLabelText="כתובת אלקטרונית" CompleteSuccessText="משתמש נוצר בהצלחה">
-        <LayoutTemplate>
-            <asp:PlaceHolder runat="server" ID="wizardStepPlaceholder"></asp:PlaceHolder>
-            <asp:PlaceHolder runat="server" ID="navigationPlaceholder"></asp:PlaceHolder>
-        </LayoutTemplate>
-        <WizardSteps>
-            <asp:CreateUserWizardStep Title=""></asp:CreateUserWizardStep>
-        </WizardSteps>
-    </asp:CreateUserWizard>
+        <table>
+            <tr>
+                <td>
+                    <asp:Label runat="server" Text="שם משתמש" CssClass="formLabel"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox runat="server" ID="txtUsername" CssClass="roundInput"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label runat="server" Text="דואר אלקטרוני" CssClass="formLabel"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox runat="server" TextMode="Email" ID="txtEmail" CssClass="roundInput"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label runat="server" Text="סיסמה" CssClass="formLabel"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox runat="server" TextMode="Password" ID="pwdPassword" CssClass="roundInput"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label runat="server" Text="אימות סיסמה" CssClass="formLabel"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox runat="server" TextMode="Password" ID="pwdConfirmPassword" CssClass="roundInput"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <asp:Button runat="server" Text="הרשמה" ID="btnSubmit" CssClass="btnSubmit"/>
+                </td>
+            </tr>
+        </table>
+    </div>
 </asp:Content>
