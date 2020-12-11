@@ -1,9 +1,12 @@
-﻿.formWrapper {
+﻿@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+.formWrapper {
     padding: 10px 25px;
     background-color: rgba(198, 198, 198, 0.5);
     width: max-content;
     margin: 100px auto;
     border-radius: 20px;
+    font-family: 'Rubik', sans-serif;
 }
 
 .formWrapper > h1 {
@@ -41,4 +44,11 @@
     border: 1px solid #000;
     float: left;
     margin: 10px;
+    transition: all .5s;
+}
+
+.btnSubmit:hover {
+    color: #fff;
+    background: #111;
+    transition: all .5s;
 }

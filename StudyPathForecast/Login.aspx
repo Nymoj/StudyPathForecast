@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="כניסה" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="StudyPathForecast.Login" %>
 
 <asp:Content runat="server" ID="head" ContentPlaceHolderID="head">
-    <link href="/Content/Login.css" type="text/css" rel="stylesheet"/>
+    <link href="/Content/Forms.css" type="text/css" rel="stylesheet"/>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
