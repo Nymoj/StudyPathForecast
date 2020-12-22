@@ -1,0 +1,30 @@
+﻿/*
+    ContentStyles contains all styles related to content pages
+    i.e. titles, paragraphs, images and more
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+.contentWrapper {
+    padding-top: 30px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.text {
+    line-height: 28px;
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.pageTitle {
+    font-size: 36px;
+    border-bottom: 1px solid #000;
+    padding: 0 10px 5px 80px;
+    width: max-content;
+}
+
+.secondaryTitle {
+    font-weight: bold;
+    font-size: 28px;
+    padding-top: 20px;
+}
