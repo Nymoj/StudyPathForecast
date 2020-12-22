@@ -21,38 +21,26 @@
 
 </head>
 <body>
-    <form runat="server">
-        <header>
-            <div class="container">
-                <h2 id="projectName">חיזוי מסלולים לימודיים</h2>
-                <asp:ContentPlaceHolder runat="server" ID="UnauthenticatedPanel">
-                    <nav>
-                        <ul>
-                            <li><asp:HyperLink runat="server" NavigateUrl="~/Default.aspx" Text="דף הבית"></asp:HyperLink></li>
-                            <li><asp:HyperLink runat="server" NavigateUrl="~/Registration.aspx" Text="הרשמה"></asp:HyperLink></li>
-                            <li><asp:HyperLink runat="server" NavigateUrl="~/Login.aspx" Text="כניסה"></asp:HyperLink></li>
-                        </ul>
-                    </nav>
-                </asp:ContentPlaceHolder>
-                <asp:ContentPlaceHolder runat="server" ID="AuthenticatedPanel">
-                    <nav>
-                        <ul>
-                            <li><asp:HyperLink runat="server" NavigateUrl="~/Default.aspx" Text="דף הבית"></asp:HyperLink></li>
-                            <li><asp:Button runat="server" ID="btnLogout" Text="יציאה" OnClick="btnLogout_Click"/></li>
-                        </ul>
-                    </nav>
-                </asp:ContentPlaceHolder>
-            </div>
-        </header>
+    <form runat="server" id="mainForm">
+        <aside class="navbar">
+            <h2 id="projectName">
+                חיזוי<br />
+                מסלולים<br />
+                לימודיים<br />
+            </h2>
+
+            <nav>
+                <ul>
+                    <li><asp:HyperLink runat="server" NavigateUrl="~/Default.aspx">עמוד בית</asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" NavigateUrl="~/Login.aspx">כניסה</asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" NavigateUrl="~/Registration.aspx">הרשמה</asp:HyperLink></li>
+                </ul>
+            </nav>
+        </aside>
         <div class="container">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <footer>
-            <div class="container">
-                <!--TODO: footer...-->
-            </div>
-        </footer>
     </form>
 </body>
 </html>

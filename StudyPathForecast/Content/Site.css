@@ -7,11 +7,15 @@
 
 .container {
     width: 980px;
-    margin: 0 auto;
-    display: block;
+    float: right;
+    padding: 0 100px;
 }
 
-#projectName {
+.clearfix {
+    overflow: auto;
+}
+
+/*#projectName {
     color: #fff;
     float: left;
     display: table-cell;
@@ -52,4 +56,55 @@ nav ul li a:hover {
 
 nav ul li a:visited {
     color: #fff;
+}*/
+
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+html, body, #mainForm {
+    height: 100%;
+    margin: 0;
+}
+
+.navbar {
+    float: right;
+    background: #111;
+    height: 100%;
+    padding: 30px 30px 0 100px;
+}
+
+#projectName {
+    font-size: 32px;
+    font-family: 'Arimo', sans-serif;
+    color: #fff;
+    letter-spacing: 3px;
+}
+
+nav > ul {
+    list-style: none;
+    padding: 30px 0;
+}
+
+nav > ul li {
+    padding-top: 6px;
+    font-size: 20px;
+}
+
+nav > ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+    transition: .5s all;
+}
+
+nav > ul li a:hover {
+    color: aqua;
+    transition: .5s all;
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        width: 100%;
+        height: auto;
+    }
 }

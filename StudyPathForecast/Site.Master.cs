@@ -13,20 +13,7 @@ namespace StudyPathForecast
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.IsAuthenticated)
-            {
-                UnauthenticatedPanel.Visible = false;
-            }
-            else
-            {
-                AuthenticatedPanel.Visible = false;
-            }
-        }
-
-        protected void btnLogout_Click(object sender, EventArgs e)
-        {
-            FormsAuthentication.SignOut();
-            FormsAuthentication.RedirectToLoginPage();
+            
         }
     }
 }
