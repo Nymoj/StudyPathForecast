@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en" dir="rtl">
+<html lang="he" dir="rtl">
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,6 +34,7 @@
                     <li><asp:HyperLink runat="server" NavigateUrl="~/Default.aspx">עמוד בית</asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" NavigateUrl="~/Login.aspx">כניסה</asp:HyperLink></li>
                     <li><asp:HyperLink runat="server" NavigateUrl="~/Registration.aspx">הרשמה</asp:HyperLink></li>
+                    <li><asp:HyperLink runat="server" NavigateUrl="~/Profile/ViewProfile.aspx">פרופיל שלי</asp:HyperLink></li>
                 </ul>
             </nav>
         </aside>

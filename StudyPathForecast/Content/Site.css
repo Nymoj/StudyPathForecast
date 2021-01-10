@@ -1,4 +1,6 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Alef&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
 
 * {
     margin: 0;
@@ -6,7 +8,6 @@
 }
 
 .container {
-    width: 980px;
     float: right;
     padding: 0 100px;
 }
@@ -14,52 +15,6 @@
 .clearfix {
     overflow: auto;
 }
-
-/*#projectName {
-    color: #fff;
-    float: left;
-    display: table-cell;
-    text-align: center;
-    font-size: 26px;
-}
-
-header {
-    padding: 20px 0;
-    background-color: #111;
-    font-family: 'Alef', sans-serif;
-    height: 80px;
-    line-height: 80px;
-}
-
-nav ul {
-    display: inline-block;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline;
-    margin-left: 8px;
-}
-
-nav ul li a {
-    font-size: 20px;
-    text-decoration: none;
-}
-
-nav ul li a:link {
-    color: #fff;
-}
-
-nav ul li a:hover {
-    color: #00ffff;
-}
-
-nav ul li a:visited {
-    color: #fff;
-}*/
-
-@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
 
 html, body, #mainForm {
     height: 100%;
@@ -102,9 +57,10 @@ nav > ul li a:hover {
     transition: .5s all;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 850px) {
     .navbar {
         width: 100%;
         height: auto;
+        float: none;
     }
 }
