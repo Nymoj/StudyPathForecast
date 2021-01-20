@@ -19,10 +19,20 @@
             </tr>
             <tr>
                 <td>
+                    <asp:RequiredFieldValidator runat="server" Display="Dynamic" ControlToValidate="txtUsername" ErrorMessage="חובה למלא שם משתמש" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <asp:Label runat="server" Text="דואר אלקטרוני" CssClass="formLabel"></asp:Label>
                 </td>
                 <td>
                     <asp:TextBox runat="server" TextMode="Email" ID="txtEmail" CssClass="roundInput"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:RequiredFieldValidator runat="server" Display="Dynamic" ControlToValidate="txtEmail" ErrorMessage="חובה למלא כתובת אלקטרונית" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -35,6 +45,11 @@
             </tr>
             <tr>
                 <td>
+                    <asp:RequiredFieldValidator runat="server" Display="Dynamic" ControlToValidate="pwdPassword" ErrorMessage="חובה למלא סיסמה" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <asp:Label runat="server" Text="אימות סיסמה" CssClass="formLabel"></asp:Label>
                 </td>
                 <td>
@@ -42,9 +57,14 @@
                 </td>
             </tr>
             <tr>
+                <td>
+                    <asp:RequiredFieldValidator runat="server" Display="Dynamic" ControlToValidate="pwdConfirmPassword" ErrorMessage="חובה לאמת סיסמה" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
                 <td></td>
                 <td>
-                    <asp:Button runat="server" Text="הרשמה" ID="btnSubmit" CssClass="btnSubmit"/>
+                    <asp:Button runat="server" Text="הרשמה" ID="btnSubmit" CssClass="btnSubmit" OnClick="RegisterUser"/>
                 </td>
             </tr>
         </table>
