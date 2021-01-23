@@ -20,6 +20,11 @@
             </tr>
             <tr>
                 <td>
+                    <asp:RequiredFieldValidator runat="server" Display="Dynamic" ControlToValidate="txtUsername" ErrorMessage="חובה למלא שם משתמש" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <asp:Label runat="server" Text="סיסמה" CssClass="formLabel"></asp:Label>
                 </td>
                 <td>
@@ -27,9 +32,19 @@
                 </td>
             </tr>
             <tr>
+                <td>
+                    <asp:RequiredFieldValidator runat="server" Display="Dynamic" ControlToValidate="pwdPassword" ErrorMessage="חובה למלא סיסמה" ForeColor="Red"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label runat="server" Text="" ID="errorMessage"></asp:Label>
+                </td>
+            </tr>
+            <tr>
                 <td></td>
                 <td>
-                    <asp:Button runat="server" Text="כניסה" ID="btnSubmit" CssClass="btnSubmit"/>
+                    <asp:Button runat="server" Text="כניסה" ID="btnSubmit" CssClass="btnSubmit" OnClick="btnSubmit_Click"/>
                 </td>
             </tr>
         </table>

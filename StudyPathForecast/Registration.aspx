@@ -62,6 +62,11 @@
                 </td>
             </tr>
             <tr>
+                <td>
+                    <asp:Label runat="server" Text="" ID="registrationError" ForeColor="Red"></asp:Label>
+                </td>
+            </tr>
+            <tr>
                 <td></td>
                 <td>
                     <asp:Button runat="server" Text="הרשמה" ID="btnSubmit" CssClass="btnSubmit" OnClick="RegisterUser"/>

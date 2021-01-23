@@ -6,6 +6,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using StudyPathForecast.Database;
 
 namespace StudyPathForecast
 {
@@ -16,6 +17,13 @@ namespace StudyPathForecast
             // Code that runs on application startup
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Connections.Initiate();
+        }
+
+        void Application_End(object sender, EventArgs e)
+        {
+            Connections.Destroy();
         }
     }
 }

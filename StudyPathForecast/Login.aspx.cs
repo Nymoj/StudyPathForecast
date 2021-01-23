@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
+using StudyPathForecast.Database;
 
 namespace StudyPathForecast
 {
@@ -15,9 +19,20 @@ namespace StudyPathForecast
             
         }
 
-        protected void Login_LoggedIn(object sender, EventArgs e)
+        protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
+            if (!Connections.UserExists(txtUsername.Text, pwdPassword.Text))
+            {
+                errorMessage.Text = "פרטים שגויים";
+                return;
+            }
+
+            Response.Redirect("~/Default.aspx");
         }
     }
 }

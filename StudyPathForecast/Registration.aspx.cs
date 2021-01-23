@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using StudyPathForecast.Database.Models;
+using StudyPathForecast.Database;
 
 namespace StudyPathForecast
 {
@@ -25,7 +27,7 @@ namespace StudyPathForecast
                 return;
             }
 
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["StudyPathForecastDB"].ConnectionString))
+            /*using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["StudyPathForecastDB"].ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("InsertUser", conn))
                 {
@@ -38,6 +40,13 @@ namespace StudyPathForecast
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
+            }*/
+
+            User user = new User(txtUsername.Text, pwdPassword.Text, txtEmail.Text);
+            if (!Connections.InsertUser(user))
+            {
+                registrationError.Text = "קרתה תקלה בתהליך ההרשמה, תחכה ותנסה שוב";
+                return;
             }
 
             Response.Redirect("~/Default.aspx");
