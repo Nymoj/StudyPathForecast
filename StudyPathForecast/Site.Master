@@ -33,8 +33,6 @@
                 <asp:Panel runat="server" ID="authenticatedMenu">
                     <ul>
                         <li><asp:HyperLink runat="server" NavigateUrl="~/Default.aspx">עמוד בית</asp:HyperLink></li>
-                        <li><asp:HyperLink runat="server" NavigateUrl="~/Login.aspx">כניסה</asp:HyperLink></li>
-                        <li><asp:HyperLink runat="server" NavigateUrl="~/Registration.aspx">הרשמה</asp:HyperLink></li>
                         <li><asp:HyperLink runat="server" NavigateUrl="~/Profile/ViewProfile.aspx">פרופיל שלי</asp:HyperLink></li>
                     </ul>
                 </asp:Panel>

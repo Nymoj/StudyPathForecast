@@ -11,7 +11,10 @@ namespace StudyPathForecast.Profile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Username"] == null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
         }
     }
 }

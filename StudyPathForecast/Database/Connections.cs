@@ -69,5 +69,26 @@ namespace StudyPathForecast.Database
 
             return false;
         }
+
+        public static bool UsernameExists(string username)
+        {
+            SqlCommand cmd = new SqlCommand("UsernameExists", Connections.Connection);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@Username", username);
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

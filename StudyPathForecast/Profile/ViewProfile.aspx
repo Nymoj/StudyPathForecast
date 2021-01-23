@@ -32,6 +32,11 @@
                     הדגמה
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <asp:Button runat="server" Text="יציאה מהמשתמש" ID="btnLogout" OnClick="btnLogout_Click"/>
+                </td>
+            </tr>
         </table>
         <p>רוצה לשנות את נתוני הפרופיל? <asp:HyperLink runat="server" NavigateUrl="~/Profile/EditProfile.aspx">ערוך אותו!</asp:HyperLink></p>
     </div>

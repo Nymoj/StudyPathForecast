@@ -38,7 +38,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label runat="server" Text="" ID="errorMessage"></asp:Label>
+                    <asp:Label runat="server" ID="errorMessage" ForeColor="Red"></asp:Label>
                 </td>
             </tr>
             <tr>

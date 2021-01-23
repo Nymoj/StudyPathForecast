@@ -16,7 +16,10 @@ namespace StudyPathForecast
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["Username"] != null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

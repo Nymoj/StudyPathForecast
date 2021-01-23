@@ -17,7 +17,10 @@ namespace StudyPathForecast
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["Username"] != null)
+            {
+                Response.Redirect("~/Default.aspx");
+            }
         }
 
         protected void RegisterUser(object sender, EventArgs e)
@@ -27,20 +30,11 @@ namespace StudyPathForecast
                 return;
             }
 
-            /*using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["StudyPathForecastDB"].ConnectionString))
+            if (Connections.UsernameExists(txtUsername.Text))
             {
-                using (SqlCommand cmd = new SqlCommand("InsertUser", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Username", txtUsername.Text);
-                    cmd.Parameters.AddWithValue("@Password", pwdPassword.Text);
-                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                    cmd.Parameters.AddWithValue("@CreatedAt", DateTime.UtcNow);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }*/
+                registrationError.Text = String.Format("שם משתמש \"{0}\" כבר נמצא בשימוש", txtUsername.Text);
+                return;
+            }
 
             User user = new User(txtUsername.Text, pwdPassword.Text, txtEmail.Text);
             if (!Connections.InsertUser(user))
@@ -49,6 +43,7 @@ namespace StudyPathForecast
                 return;
             }
 
+            Session["Username"] = txtUsername.Text;
             Response.Redirect("~/Default.aspx");
         }
     }
