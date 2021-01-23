@@ -33,6 +33,24 @@ namespace StudyPathForecast
         protected global::System.Web.UI.HtmlControls.HtmlForm mainForm;
 
         /// <summary>
+        /// authenticatedMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel authenticatedMenu;
+
+        /// <summary>
+        /// unauthenticatedMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel unauthenticatedMenu;
+
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

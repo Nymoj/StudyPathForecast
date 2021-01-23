@@ -35,24 +35,24 @@ html, body, #mainForm {
     letter-spacing: 3px;
 }
 
-nav > ul {
+nav ul {
     list-style: none;
     padding: 30px 0;
 }
 
-nav > ul li {
+nav ul li {
     padding-top: 6px;
     font-size: 20px;
 }
 
-nav > ul li a {
+nav ul li a {
     color: #fff;
     text-decoration: none;
     font-family: 'Rubik', sans-serif;
     transition: .5s all;
 }
 
-nav > ul li a:hover {
+nav ul li a:hover {
     color: aqua;
     transition: .5s all;
 }
