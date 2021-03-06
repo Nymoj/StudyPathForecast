@@ -113,5 +113,87 @@ namespace StudyPathForecast.Database
 
             return user;
         }
+
+        /// <summary>
+        /// Checks if provided password matches user's password
+        /// </summary>
+        /// <param name="username">The user to be checked</param>
+        /// <param name="password">The password</param>
+        /// <returns></returns>
+        public static bool UserPasswordMatch(string username, string password)
+        {
+            SqlCommand cmd = new SqlCommand("userPasswordMatches", Connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        #region Updating User's Data Methods
+
+        /// <summary>
+        /// Updates user's email
+        /// </summary>
+        /// <param name="username">The user to be updated</param>
+        /// <param name="email">The new email</param>
+        /// <returns></returns>
+        public static bool UpdateUserEmail(string username, string email)
+        {
+            SqlCommand cmd = new SqlCommand("UpdateEmail", Connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@Username", username);
+            cmd.Parameters.AddWithValue("@Email", email);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Updates user's email
+        /// </summary>
+        /// <param name="username">The user to be updated</param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static bool UpdateUserPassword(string username, string password)
+        {
+            SqlCommand cmd = new SqlCommand("UpdatePassword", Connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@Username", username);
+            cmd.Parameters.AddWithValue("@Password", password);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+
+            return true;
+        }
+
+        #endregion
     }
 }

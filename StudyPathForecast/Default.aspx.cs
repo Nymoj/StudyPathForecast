@@ -13,11 +13,5 @@ namespace StudyPathForecast
         {
             
         }
-
-        protected void btnLogout_Click(object sender, EventArgs e)
-        {
-            Session.Clear();
-            Response.Redirect("~/Default.aspx");
-        }
     }
 }

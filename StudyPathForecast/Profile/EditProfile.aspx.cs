@@ -30,6 +30,17 @@ namespace StudyPathForecast.Profile
                 errorMessage.Text = "סיסמה שגויה";
                 return;
             }
+
+
+            if (!string.IsNullOrEmpty(txtNewEmail.Text))
+            {
+                Connections.UpdateUserEmail(user.Username, txtNewEmail.Text);
+            }
+
+            if (!string.IsNullOrEmpty(pwdNewPassword.Text))
+            {
+                Connections.UpdateUserPassword(user.Username, pwdNewPassword.Text);
+            }
         }
     }
 }

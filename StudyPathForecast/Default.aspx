@@ -23,6 +23,4 @@
         </p>
     </div>
 
-    <asp:Button runat="server" Text="log out" Id="btnLogout" OnClick="btnLogout_Click"/>
-
 </asp:Content>
