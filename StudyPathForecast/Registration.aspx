@@ -63,6 +63,11 @@
             </tr>
             <tr>
                 <td>
+                    <asp:CompareValidator runat="server" ControlToValidate="pwdConfirmPassword" ControlToCompare="pwdPassword" Operator="Equal" ErrorMessage="סיסמאות לא זהות" ForeColor="Red"></asp:CompareValidator>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <asp:Label runat="server" Text="" ID="registrationError" ForeColor="Red"></asp:Label>
                 </td>
             </tr>

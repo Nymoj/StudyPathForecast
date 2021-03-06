@@ -14,7 +14,7 @@
                     שם משתמתש:
                 </td>
                 <td>
-                    הדגמה
+                    <%: user.Username %>
                 </td>
             </tr>
             <tr>
@@ -30,7 +30,7 @@
                     סיסמה חדשה:
                 </td>
                 <td>
-                    <asp:TextBox CssClass="roundInput" runat="server" TextMode="Email" ID="pwdPassword"></asp:TextBox>
+                    <asp:TextBox CssClass="roundInput" runat="server" TextMode="Password" ID="pwdNewPassword"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -38,13 +38,18 @@
                     סיסמה נוכחית:
                 </td>
                 <td>
-                    <asp:TextBox CssClass="roundInput" runat="server" TextMode="Email" ID="TextBox1"></asp:TextBox>
+                    <asp:TextBox CssClass="roundInput" runat="server" TextMode="Password" ID="pwdPassword"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label runat="server" ID="errorMessage" ForeColor="Red"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    <asp:Button runat="server" CssClass="btnSubmit" Text="שמור"/>
+                    <asp:Button runat="server" CssClass="btnSubmit" Text="שמור" ID="btnSaveChanges" OnClick="btnSaveChanges_Click"/>
                 </td>
             </tr>
         </table>

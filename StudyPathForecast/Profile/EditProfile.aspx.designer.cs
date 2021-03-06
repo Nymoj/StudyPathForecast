@@ -24,6 +24,15 @@ namespace StudyPathForecast.Profile
         protected global::System.Web.UI.WebControls.TextBox txtNewEmail;
 
         /// <summary>
+        /// pwdNewPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox pwdNewPassword;
+
+        /// <summary>
         /// pwdPassword control.
         /// </summary>
         /// <remarks>
@@ -33,12 +42,21 @@ namespace StudyPathForecast.Profile
         protected global::System.Web.UI.WebControls.TextBox pwdPassword;
 
         /// <summary>
-        /// TextBox1 control.
+        /// errorMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Label errorMessage;
+
+        /// <summary>
+        /// btnSaveChanges control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveChanges;
     }
 }

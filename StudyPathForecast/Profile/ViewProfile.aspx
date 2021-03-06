@@ -13,7 +13,7 @@
                     שם משתמתש:
                 </td>
                 <td>
-                    הדגמה
+                    <%: user.Username %>
                 </td>
             </tr>
             <tr>
@@ -21,7 +21,7 @@
                     דואר אלקטרוני: 
                 </td>
                 <td>
-                    הדגמה
+                    <%: user.Email %>
                 </td>
             </tr>
             <tr>
@@ -29,7 +29,7 @@
                     תאריך הרשמה:
                 </td>
                 <td>
-                    הדגמה
+                    <%: String.Format("{0}.{1}.{2}", user.CreatedAt.Day, user.CreatedAt.Month, user.CreatedAt.Year) %>
                 </td>
             </tr>
             <tr>

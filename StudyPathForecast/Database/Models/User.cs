@@ -12,6 +12,14 @@ namespace StudyPathForecast.Database.Models
         public string Email { get; set; }
         public DateTime CreatedAt { get; set; }
 
+        public User()
+        {
+            Username = "";
+            Password = "";
+            Email = "";
+            CreatedAt = DateTime.MinValue;
+        }
+
         public User(string username, string password, string email)
         {
             Username = username;

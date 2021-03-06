@@ -90,5 +90,28 @@ namespace StudyPathForecast.Database
 
             return false;
         }
+
+        public static User GetUser(string username)
+        {
+            User user = new User();
+
+            SqlCommand cmd = new SqlCommand("GetUser", Connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@Username", username);
+
+            using (SqlDataReader dr = cmd.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+                    user.Username = dr["Username"].ToString();
+                    user.Password = dr["Password"].ToString();
+                    user.Email = dr["Email"].ToString();
+                    user.CreatedAt = Convert.ToDateTime(dr["CreatedAt"]);
+                }
+            }
+
+            return user;
+        }
     }
 }
