@@ -34,6 +34,7 @@
                     <ul>
                         <li><asp:HyperLink runat="server" NavigateUrl="~/Default.aspx">עמוד בית</asp:HyperLink></li>
                         <li><asp:HyperLink runat="server" NavigateUrl="~/Profile/ViewProfile.aspx">פרופיל שלי</asp:HyperLink></li>
+                        <li><asp:HyperLink runat="server" NavigateUrl="~/Stats/Forecast.aspx">חיזוי</asp:HyperLink></li>
                     </ul>
                 </asp:Panel>
                 <asp:Panel runat="server" ID="unauthenticatedMenu">

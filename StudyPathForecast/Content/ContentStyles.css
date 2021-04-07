@@ -28,3 +28,9 @@
     font-size: 28px;
     padding-top: 20px;
 }
+
+.table {
+    border-collapse: separate;
+    border-spacing: 20px 15px;
+    font-size: 20px;
+}
