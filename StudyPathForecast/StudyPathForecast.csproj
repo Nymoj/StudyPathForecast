@@ -118,6 +118,12 @@
     <Content Include="Registration.aspx" />
     <Content Include="Site.Master" />
     <Content Include="Stats\Forecast.aspx" />
+    <Content Include="Stats\Grades\Art.aspx" />
+    <Content Include="Stats\Grades\English4Points.aspx" />
+    <Content Include="Stats\Grades\English5Points.aspx" />
+    <Content Include="Stats\Grades\Math4PointsGrades.aspx" />
+    <Content Include="Stats\Grades\Math5Points.aspx" />
+    <Content Include="Stats\Grades\Physics.aspx" />
     <Content Include="Stats\Questions\Preferences.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -127,7 +133,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Database\Connections.cs" />
+    <Compile Include="Database\Models\SubjectGradesHistory.cs" />
     <Compile Include="Database\Models\User.cs" />
+    <Compile Include="Database\Models\UserData.cs" />
+    <Compile Include="ID3\Decision.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -138,6 +147,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ID3\DecisionQuery.cs" />
+    <Compile Include="ID3\DecisionResult.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -187,6 +198,48 @@
     </Compile>
     <Compile Include="Stats\Forecast.aspx.designer.cs">
       <DependentUpon>Forecast.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stats\Grades\Art.aspx.cs">
+      <DependentUpon>Art.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stats\Grades\Art.aspx.designer.cs">
+      <DependentUpon>Art.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stats\Grades\English4Points.aspx.cs">
+      <DependentUpon>English4Points.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stats\Grades\English4Points.aspx.designer.cs">
+      <DependentUpon>English4Points.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stats\Grades\English5Points.aspx.cs">
+      <DependentUpon>English5Points.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stats\Grades\English5Points.aspx.designer.cs">
+      <DependentUpon>English5Points.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stats\Grades\Math4PointsGrades.aspx.cs">
+      <DependentUpon>Math4PointsGrades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stats\Grades\Math4PointsGrades.aspx.designer.cs">
+      <DependentUpon>Math4PointsGrades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stats\Grades\Math5Points.aspx.cs">
+      <DependentUpon>Math5Points.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stats\Grades\Math5Points.aspx.designer.cs">
+      <DependentUpon>Math5Points.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stats\Grades\Physics.aspx.cs">
+      <DependentUpon>Physics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stats\Grades\Physics.aspx.designer.cs">
+      <DependentUpon>Physics.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stats\Questions\Preferences.aspx.cs">
       <DependentUpon>Preferences.aspx</DependentUpon>

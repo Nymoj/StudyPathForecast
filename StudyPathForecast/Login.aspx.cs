@@ -35,7 +35,8 @@ namespace StudyPathForecast
                 return;
             }
 
-            Session["Username"] = txtUsername.Text;
+            //Session["Username"] = txtUsername.Text;
+            Session["User"] = Connections.GetUser(txtUsername.Text);
 
             Response.Redirect("~/Default.aspx");
         }

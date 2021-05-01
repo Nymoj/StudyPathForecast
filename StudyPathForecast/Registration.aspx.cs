@@ -43,7 +43,18 @@ namespace StudyPathForecast
                 return;
             }
 
-            Session["Username"] = txtUsername.Text;
+            // getting the id of the user assigned by the DB
+            UserData userData = new UserData(Connections.GetUser(user.Username).Id);
+
+            if (!Connections.InsertUserData(userData))
+            {
+                registrationError.Text = "קרתה תקלה בתהליך ההרשמה, תחכה ותנסה שוב";
+                return;
+            }
+
+            //Session["Username"] = txtUsername.Text;
+            Session["User"] = Connections.GetUser(txtUsername.Text);
+
             Response.Redirect("~/Default.aspx");
         }
     }

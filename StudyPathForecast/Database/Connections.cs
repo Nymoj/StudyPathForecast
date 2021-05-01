@@ -104,6 +104,7 @@ namespace StudyPathForecast.Database
             {
                 while (dr.Read())
                 {
+                    user.Id = Convert.ToInt32(dr["ID"]);
                     user.Username = dr["Username"].ToString();
                     user.Password = dr["Password"].ToString();
                     user.Email = dr["Email"].ToString();
@@ -125,6 +126,9 @@ namespace StudyPathForecast.Database
             SqlCommand cmd = new SqlCommand("userPasswordMatches", Connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
+            cmd.Parameters.AddWithValue("@Username", username);
+            cmd.Parameters.AddWithValue("@Password", password);
+
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
 
@@ -136,6 +140,67 @@ namespace StudyPathForecast.Database
             }
 
             return false;
+        }
+
+        public static UserData GetUserData(User user)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM UserData WHERE UserID=(SELECT ID FROM Users WHERE Username=@Username)", Connection);
+            cmd.CommandType = CommandType.Text;
+
+            cmd.Parameters.AddWithValue("@Username", user.Username);
+
+            UserData userData = new UserData(user.Id);
+
+            using (SqlDataReader dr = cmd.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+                    // assigning math
+                    userData.Is5PointsMathStudent = Convert.ToBoolean(dr["Is5PointsMathStudent"]);
+                    userData.Is4PointsMathStudent = Convert.ToBoolean(dr["Is4PointsMathStudent"]);
+                    // assigning english
+                    userData.Is5PointsEnglishStudent = Convert.ToBoolean(dr["Is5PointsEnglishStudent"]);
+                    userData.Is4PointsEnglishStudent = Convert.ToBoolean(dr["Is4PointsEnglishStudent"]);
+                    // assigning physics
+                    userData.IsPhysicsStudent = Convert.ToBoolean(dr["IsPhysicsStudent"]);
+                    // assigning art
+                    userData.IsArtStudent = Convert.ToBoolean(dr["IsArtStudent"]);
+                    // assigning user id
+                    userData.UserId = Convert.ToInt32(dr["UserID"]);
+                }
+            }
+
+            return userData;
+        }
+
+        public static bool InsertUserData(UserData userData)
+        {
+            SqlCommand cmd = new SqlCommand("InsertUserData", Connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@UserID", userData.UserId);
+            // math
+            cmd.Parameters.AddWithValue("@Is5PointsMathStudent", userData.Is5PointsMathStudent);
+            cmd.Parameters.AddWithValue("@Is4PointsMathStudent", userData.Is4PointsMathStudent);
+            // english
+            cmd.Parameters.AddWithValue("@Is5PointsEnglishStudent", userData.Is5PointsEnglishStudent);
+            cmd.Parameters.AddWithValue("@Is4PointsEnglishStudent", userData.Is4PointsEnglishStudent);
+            // physics
+            cmd.Parameters.AddWithValue("@IsPhysicsStudent", userData.IsPhysicsStudent);
+            // art
+            cmd.Parameters.AddWithValue("@IsArtStudent", userData.IsArtStudent);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+
+            return true;
         }
 
         #region Updating User's Data Methods

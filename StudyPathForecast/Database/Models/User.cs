@@ -7,6 +7,7 @@ namespace StudyPathForecast.Database.Models
 {
     public class User
     {
+        public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
@@ -14,6 +15,7 @@ namespace StudyPathForecast.Database.Models
 
         public User()
         {
+            Id = 0;
             Username = "";
             Password = "";
             Email = "";

@@ -13,7 +13,7 @@ namespace StudyPathForecast
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Username"] != null)
+            if (Session["User"] != null)
             {
                 unauthenticatedMenu.Visible = false;
             }

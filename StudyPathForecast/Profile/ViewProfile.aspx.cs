@@ -15,12 +15,12 @@ namespace StudyPathForecast.Profile
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Username"] == null)
+            if (Session["User"] == null)
             {
                 Response.Redirect("~/Default.aspx");
             }
 
-            user = Connections.GetUser(Session["Username"].ToString());
+            user = Connections.GetUser(((User)Session["User"])?.Username);
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)
