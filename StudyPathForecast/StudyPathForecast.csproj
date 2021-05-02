@@ -121,7 +121,7 @@
     <Content Include="Stats\Grades\Art.aspx" />
     <Content Include="Stats\Grades\English4Points.aspx" />
     <Content Include="Stats\Grades\English5Points.aspx" />
-    <Content Include="Stats\Grades\Math4PointsGrades.aspx" />
+    <Content Include="Stats\Grades\Math4Points.aspx" />
     <Content Include="Stats\Grades\Math5Points.aspx" />
     <Content Include="Stats\Grades\Physics.aspx" />
     <Content Include="Stats\Questions\Preferences.aspx" />
@@ -220,12 +220,12 @@
     <Compile Include="Stats\Grades\English5Points.aspx.designer.cs">
       <DependentUpon>English5Points.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Stats\Grades\Math4PointsGrades.aspx.cs">
-      <DependentUpon>Math4PointsGrades.aspx</DependentUpon>
+    <Compile Include="Stats\Grades\Math4Points.aspx.cs">
+      <DependentUpon>Math4Points.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Stats\Grades\Math4PointsGrades.aspx.designer.cs">
-      <DependentUpon>Math4PointsGrades.aspx</DependentUpon>
+    <Compile Include="Stats\Grades\Math4Points.aspx.designer.cs">
+      <DependentUpon>Math4Points.aspx</DependentUpon>
     </Compile>
     <Compile Include="Stats\Grades\Math5Points.aspx.cs">
       <DependentUpon>Math5Points.aspx</DependentUpon>

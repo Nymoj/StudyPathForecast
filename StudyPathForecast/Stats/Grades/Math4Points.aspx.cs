@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace StudyPathForecast.Stats.Grades
 {
-    public partial class Art : System.Web.UI.Page
+    public partial class Math4Points : System.Web.UI.Page
     {
         private User user;
 
@@ -27,7 +27,7 @@ namespace StudyPathForecast.Stats.Grades
             using (SqlCommand cmd = new SqlCommand("SELECT Grade, Date FROM Grades WHERE UserID=@UserID AND Subject=@Subject;", Connections.Connection))
             {
                 cmd.Parameters.AddWithValue("@UserID", user.Id);
-                cmd.Parameters.AddWithValue("@Subject", "Art");
+                cmd.Parameters.AddWithValue("@Subject", "Math4Points");
                 dr = cmd.ExecuteReader();
                 gvGrades.DataSource = dr;
                 gvGrades.DataBind();
@@ -63,7 +63,7 @@ namespace StudyPathForecast.Stats.Grades
             using (SqlCommand cmd = new SqlCommand("INSERT INTO Grades (UserID, Subject, Grade, Date) VALUES (@UserID, @Subject, @Grade, @Date);", Connections.Connection))
             {
                 cmd.Parameters.AddWithValue("@UserID", user.Id);
-                cmd.Parameters.AddWithValue("@Subject", "Art");
+                cmd.Parameters.AddWithValue("@Subject", "Math4Points");
                 cmd.Parameters.AddWithValue("@Grade", grade);
                 cmd.Parameters.AddWithValue("@Date", DateTime.Today);
 
@@ -71,7 +71,7 @@ namespace StudyPathForecast.Stats.Grades
             }
 
             txtGrade.Text = string.Empty;
-            Response.Redirect("Art.aspx", false);
+            Response.Redirect("Math4Points.aspx", false);
         }
     }
 }

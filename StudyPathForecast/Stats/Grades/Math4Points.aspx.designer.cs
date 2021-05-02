@@ -11,7 +11,7 @@ namespace StudyPathForecast.Stats.Grades
 {
 
 
-    public partial class Physics
+    public partial class Math4Points
     {
 
         /// <summary>

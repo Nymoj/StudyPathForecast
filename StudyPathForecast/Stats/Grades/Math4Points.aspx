@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Physics.aspx.cs" Inherits="StudyPathForecast.Stats.Grades.Physics" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Math4Points.aspx.cs" Inherits="StudyPathForecast.Stats.Grades.Math4Points" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="/Content/ContentStyles.css" rel="stylesheet" type="text/css"/>
     <link href="/Content/Forms.css" rel="stylesheet" type="text/css"/>

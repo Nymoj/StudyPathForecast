@@ -27,6 +27,7 @@ namespace StudyPathForecast.Stats
             if (userData.Is5PointsMathStudent)
             {
                 link = new HyperLink();
+                link.CssClass = "link";
                 link.NavigateUrl = string.Format(linkFormat, "Math5Points");
                 link.Text = "מתמטיקה 5 יח'";
                 gradeLinks.Controls.Add(link);
@@ -35,6 +36,7 @@ namespace StudyPathForecast.Stats
             if (userData.Is4PointsMathStudent)
             {
                 link = new HyperLink();
+                link.CssClass = "link";
                 link.NavigateUrl = string.Format(linkFormat, "Math4Points");
                 link.Text = "מתמטיקה 4 יח'";
                 gradeLinks.Controls.Add(link);
@@ -43,6 +45,7 @@ namespace StudyPathForecast.Stats
             if (userData.Is5PointsEnglishStudent)
             {
                 link = new HyperLink();
+                link.CssClass = "link";
                 link.NavigateUrl = string.Format(linkFormat, "English5Points");
                 link.Text = "אנגלית 5 יח'";
                 gradeLinks.Controls.Add(link);
@@ -51,6 +54,7 @@ namespace StudyPathForecast.Stats
             if (userData.Is4PointsEnglishStudent)
             {
                 link = new HyperLink();
+                link.CssClass = "link";
                 link.NavigateUrl = string.Format(linkFormat, "English4Points");
                 link.Text = "אנגלית 4 יח'";
                 gradeLinks.Controls.Add(link);
@@ -59,6 +63,7 @@ namespace StudyPathForecast.Stats
             if (userData.IsPhysicsStudent)
             {
                 link = new HyperLink();
+                link.CssClass = "link";
                 link.NavigateUrl = string.Format(linkFormat, "Physics");
                 link.Text = "פיזיקה";
                 gradeLinks.Controls.Add(link);
@@ -67,6 +72,7 @@ namespace StudyPathForecast.Stats
             if (userData.IsArtStudent)
             {
                 link = new HyperLink();
+                link.CssClass = "link";
                 link.NavigateUrl = string.Format(linkFormat, "Art");
                 link.Text = "אמנות";
                 gradeLinks.Controls.Add(link);
