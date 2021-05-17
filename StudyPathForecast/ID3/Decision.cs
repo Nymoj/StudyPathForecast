@@ -1,5 +1,5 @@
 ﻿
-using StudyPathForecast.Database.Models;
+using StudyPathForecast.Database.CSModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,6 @@ namespace StudyPathForecast
 {
     public abstract class Decision
     {
-        public abstract void Evaluate(User user);
+        public abstract void Evaluate(UserData user);
     }
 }

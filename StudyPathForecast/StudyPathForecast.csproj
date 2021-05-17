@@ -149,6 +149,9 @@
     </Compile>
     <Compile Include="ID3\DecisionQuery.cs" />
     <Compile Include="ID3\DecisionResult.cs" />
+    <Compile Include="ID3\CSID3Algorithm.cs" />
+    <Compile Include="ID3\CSModel.cs" />
+    <Compile Include="ID3\Node.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

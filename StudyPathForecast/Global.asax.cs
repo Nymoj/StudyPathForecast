@@ -19,6 +19,8 @@ namespace StudyPathForecast
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Connections.Initiate();
+            ID3.CSID3Algorithm csid3 = new ID3.CSID3Algorithm();
+            ID3.CSID3Algorithm.Root = csid3.ID3(ID3.CSModel.GetData(), ID3.CSModel.PredictiveProperties, "root");
         }
 
         void Application_End(object sender, EventArgs e)

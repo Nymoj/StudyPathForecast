@@ -1,4 +1,4 @@
-﻿using StudyPathForecast.Database.Models;
+﻿using StudyPathForecast.Database.CSModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace StudyPathForecast.ID3
     {
         public bool Result { get; set; }
         
-        public override void Evaluate(User user)
+        public override void Evaluate(UserData user)
         {
             
         }

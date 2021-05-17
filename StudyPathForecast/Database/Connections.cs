@@ -1,4 +1,4 @@
-﻿using StudyPathForecast.Database.Models;
+﻿using StudyPathForecast.Database.CSModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -72,6 +72,7 @@ namespace StudyPathForecast.Database
 
         public static bool UsernameExists(string username)
         {
+            // SELECT * FROM Users WHERE Username=@Username;
             SqlCommand cmd = new SqlCommand("UsernameExists", Connections.Connection);
 
             cmd.CommandType = CommandType.StoredProcedure;
@@ -123,6 +124,7 @@ namespace StudyPathForecast.Database
         /// <returns></returns>
         public static bool UserPasswordMatch(string username, string password)
         {
+            // SELECT * FROM Users WHERE Username=@Username AND Password=@Password;
             SqlCommand cmd = new SqlCommand("userPasswordMatches", Connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -198,6 +200,75 @@ namespace StudyPathForecast.Database
             {
                 Console.WriteLine(e.Message);
                 return false;
+            }
+
+            return true;
+        }
+
+        public static bool UpdateUserData(UserData userData)
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE UserData SET Is5PointsMathStudent=@Is5PointsMathStudent, Is4PointsMathStudent=@Is4PointsMathStudent, Is5PointsEnglishStudent=@Is5PointsEnglishStudent, Is4PointsEnglishStudent=@Is4PointsEnglishStudent, IsPhysicsStudent=@IsPhysicsStudent, IsArtStudent=@IsArtStudent WHERE UserID=@ID;", Connection);
+
+            cmd.Parameters.AddWithValue("@ID", userData.UserId);
+            // math
+            cmd.Parameters.AddWithValue("@Is5PointsMathStudent", userData.Is5PointsMathStudent);
+            cmd.Parameters.AddWithValue("@Is4PointsMathStudent", userData.Is4PointsMathStudent);
+            // english
+            cmd.Parameters.AddWithValue("@Is5PointsEnglishStudent", userData.Is5PointsEnglishStudent);
+            cmd.Parameters.AddWithValue("@Is4PointsEnglishStudent", userData.Is4PointsEnglishStudent);
+            // physics
+            cmd.Parameters.AddWithValue("@IsPhysicsStudent", userData.IsPhysicsStudent);
+            // art
+            cmd.Parameters.AddWithValue("@IsArtStudent", userData.IsArtStudent);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+
+            SqlCommand updateGrades = new SqlCommand("DELETE FROM Grades WHERE UserId=@UserId AND Subject=@Subject;", Connections.Connection);
+
+            updateGrades.Parameters.Add("@UserId", typeof(int));
+            updateGrades.Parameters.Add("@Subject", typeof(string));
+
+            if (!userData.Is5PointsMathStudent)
+            {
+                updateGrades.Parameters["@UserID"].Value = userData.UserId;
+                updateGrades.Parameters["@Subject"].Value = "Math5Points";
+                updateGrades.ExecuteNonQuery();
+            }
+            if (!userData.Is4PointsMathStudent)
+            {
+                updateGrades.Parameters["@UserID"].Value = userData.UserId;
+                updateGrades.Parameters["@Subject"].Value = "Math4Points";
+                updateGrades.ExecuteNonQuery();
+            }
+
+            if (!userData.Is5PointsEnglishStudent)
+            {
+                updateGrades.Parameters["@UserID"].Value = userData.UserId;
+                updateGrades.Parameters["@Subject"].Value = "English5Points";
+            }
+            if (!userData.Is4PointsEnglishStudent)
+            {
+                updateGrades.Parameters["@UserID"].Value = userData.UserId;
+                updateGrades.Parameters["@Subject"].Value = "English4Points";
+            }
+
+            if (!userData.IsPhysicsStudent)
+            {
+                updateGrades.Parameters["@UserID"].Value = userData.UserId;
+                updateGrades.Parameters["@Subject"].Value = "Physics";
+            }
+            if (!userData.IsArtStudent)
+            {
+                updateGrades.Parameters["@UserID"].Value = userData.UserId;
+                updateGrades.Parameters["@Subject"].Value = "Art";
             }
 
             return true;

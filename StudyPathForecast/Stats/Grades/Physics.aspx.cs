@@ -1,5 +1,5 @@
 ﻿using StudyPathForecast.Database;
-using StudyPathForecast.Database.Models;
+using StudyPathForecast.Database.CSModels;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;

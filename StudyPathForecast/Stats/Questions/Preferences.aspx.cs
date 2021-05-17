@@ -1,5 +1,5 @@
 ﻿using StudyPathForecast.Database;
-using StudyPathForecast.Database.Models;
+using StudyPathForecast.Database.CSModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,9 +68,14 @@ namespace StudyPathForecast.Stats.Questions
 
         protected void Submit_Click(object sender, EventArgs e)
         {
-            if (!Connections.InsertUserData(userData))
+            // no data entry exists yet
+            if (Connections.GetUserData((User)Session["User"]) == null)
             {
-                return;
+                Connections.InsertUserData(userData);
+            }
+            else
+            {
+                Connections.UpdateUserData(userData);
             }
 
             Response.Redirect("~/Stats/Forecast.aspx");

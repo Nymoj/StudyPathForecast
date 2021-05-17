@@ -8,7 +8,7 @@
         <h1 class="pageTitle">שאלום העדיפויות</h1>
         <table class="table">
             <tr>
-                <td>האם אתה אוהב מתמטיקה 5 יחידות?</td>
+                <td>האם אתה לומד מתמטיקה 5 יחידות?</td>
                 <td>
                     <!--<asp:RadioButton runat="server" GroupName="Studies5PointsMath" Text="כן"/>
                     <asp:RadioButton runat="server" GroupName="Studies5PointsMath" Text="לא"/>-->
@@ -19,7 +19,7 @@
                 </td>
             </tr>
             <tr>
-                <td>האם אתה אוהב מתמטיקה 4 יחידות?</td>
+                <td>האם אתה לומד מתמטיקה 4 יחידות?</td>
                 <td>
                     <asp:RadioButtonList runat="server" ID="Math4" RepeatDirection="Horizontal" OnSelectedIndexChanged="Math4_SelectedIndexChanged">
                         <asp:ListItem>כן</asp:ListItem>
@@ -28,7 +28,7 @@
                 </td>
             </tr>
             <tr>
-                <td>האם אתה אוהב אנגלית 5 יחידות?</td>
+                <td>האם אתה לומד אנגלית 5 יחידות?</td>
                 <td>
                     <asp:RadioButtonList runat="server" ID="English5" RepeatDirection="Horizontal" OnSelectedIndexChanged="English5_SelectedIndexChanged">
                         <asp:ListItem>כן</asp:ListItem>
@@ -37,7 +37,7 @@
                 </td>
             </tr>
             <tr>
-                <td>האם אתה אוהב אנגלית 4 יחידות?</td>
+                <td>האם אתה לומד אנגלית 4 יחידות?</td>
                 <td>
                     <asp:RadioButtonList runat="server" ID="English4" RepeatDirection="Horizontal" OnSelectedIndexChanged="English4_SelectedIndexChanged">
                         <asp:ListItem>כן</asp:ListItem>
@@ -62,6 +62,9 @@
                         <asp:ListItem>לא</asp:ListItem>
                     </asp:RadioButtonList>
                 </td>
+            </tr>
+            <tr>
+                <td><p style="color:red;">זהירות! בעת סימון "לא" במקצועות הנלמדים, כל הציונים שהוזנו באותו מקצוע ימחקו</p></td>
             </tr>
             <tr>
                 <td></td>

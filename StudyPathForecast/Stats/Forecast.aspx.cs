@@ -1,7 +1,8 @@
 ﻿using StudyPathForecast.Database;
-using StudyPathForecast.Database.Models;
+using StudyPathForecast.Database.CSModels;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,9 +12,11 @@ namespace StudyPathForecast.Stats
 {
     public partial class Forecast : System.Web.UI.Page
     {
+        private User user;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            User user = (User)Session["User"];
+            user = (User)Session["User"];
 
             if (user == null)
             {
@@ -76,6 +79,20 @@ namespace StudyPathForecast.Stats
                 link.NavigateUrl = string.Format(linkFormat, "Art");
                 link.Text = "אמנות";
                 gradeLinks.Controls.Add(link);
+            }
+        }
+
+        protected void btnSubmitChosenPath_Click(object sender, EventArgs e)
+        {
+            // if checked, save the choise to db
+            if (hasChosenPath.Checked)
+            {
+                using (SqlCommand cmd = new SqlCommand("UPDATE UserData SET ChosenPath=@ChosenPath WHERE UserID=@ID;", Connections.Connection))
+                {
+                    cmd.Parameters.AddWithValue("@ChosenPath", chosenPath.SelectedValue);
+                    cmd.Parameters.AddWithValue("@ID", user.Id);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
     }
