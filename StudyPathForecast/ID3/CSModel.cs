@@ -18,16 +18,6 @@ namespace StudyPathForecast.ID3
         public string IsPhysicsStudent { get; set; }
         public string IsArtStudent { get; set; }
 
-        // None (No grades or doesn't learn the subject)| Low (0-60) | Normal (60-80) | High (80-100)
-        public string Math5Avg { get; set; }
-        public string Math4Avg { get; set; }
-
-        public string English5Avg { get; set; }
-        public string English4Avg { get; set; }
-
-        public string PhysicsAvg { get; set; }
-        public string ArtAvg { get; set; }
-
         public string ChosenPath { get; set; }
 
         // the attributes (columns) used by ID3 to predict the target variable
@@ -40,15 +30,11 @@ namespace StudyPathForecast.ID3
             "IsArtStudent"
         };
         // Used to check if a CSModel stands for the desired value
+        // In our case, the succes is when student has chosen the CS path
         public static Func<CSModel, bool> Success = (x => x.ChosenPath == "CS");
         // Used in the tree as an indicator
         public static string Positive = "Yes";
         public static string Negative = "No";
-
-        public CSModel()
-        {
-
-        }
 
         public string ValueByField(string field)
         {
@@ -68,21 +54,6 @@ namespace StudyPathForecast.ID3
                     return IsPhysicsStudent;
                 case "IsArtStudent":
                     return IsArtStudent;
-
-                case "Math5Avg":
-                    return Math5Avg;
-                case "Math4Avg":
-                    return Math4Avg;
-
-                case "English5Avg":
-                    return English5Avg;
-                case "English4Avg":
-                    return English4Avg;
-
-                case "PhysicsAvg":
-                    return PhysicsAvg;
-                case "ArtAvg":
-                    return ArtAvg;
 
                 default:
                     return "Error";
@@ -126,7 +97,7 @@ namespace StudyPathForecast.ID3
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
-        private static string BoolToString(object val)
+        public static string BoolToString(object val)
         {
             return Convert.ToBoolean(val) ? "Yes" : "No";
         }

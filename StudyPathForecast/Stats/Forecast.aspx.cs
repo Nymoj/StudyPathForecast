@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using StudyPathForecast.ID3;
 
 namespace StudyPathForecast.Stats
 {
@@ -80,6 +81,8 @@ namespace StudyPathForecast.Stats
                 link.Text = "אמנות";
                 gradeLinks.Controls.Add(link);
             }
+
+            lblResult.Text = CalculateForecast(CSID3Algorithm.Root);
         }
 
         protected void btnSubmitChosenPath_Click(object sender, EventArgs e)
@@ -94,6 +97,54 @@ namespace StudyPathForecast.Stats
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        private string CalculateForecast(Node root)
+        {
+            // base case, root is a leaf
+            if (root.children.Count == 0)
+            {
+                return root.Label;
+            }
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM UserData WHERE UserID=@UserID;", Connections.Connection);
+            cmd.Parameters.AddWithValue("@UserID", user.Id);
+            //cmd.Parameters.AddWithValue("@Subject", root.Attribute);
+            
+            string res = "";
+
+            using (SqlDataReader dr = cmd.ExecuteReader())
+            {
+                while (dr.Read())
+                    res = CSModel.BoolToString(dr[root.Attribute]);
+            }
+
+            return res == "Yes" ? CalculateForecast(root.children[1]) : CalculateForecast(root.children[0]);
+
+            /*switch(root.Attribute)
+            {
+                case "Is5PointsMathStudent":
+                    cmd.Parameters["@Subject"].Value = "";
+                    break;
+                case "Is4PointsMathStudent":
+                    cmd.Parameters["@Subject"].Value = "";
+                    break;
+
+                case "Is5PointsEnglishStudent":
+                    cmd.Parameters["@Subject"].Value = "";
+                    break;
+                case "Is4PointsEnglishStudent":
+                    cmd.Parameters["@Subject"].Value = "";
+                    break;
+
+                case "IsPhysicsStudent":
+                    return IsPhysicsStudent;
+                case "IsArtStudent":
+                    return IsArtStudent;
+
+                default:
+                    return "Error";
+            }*/
         }
     }
 }

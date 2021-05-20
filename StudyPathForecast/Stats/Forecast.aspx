@@ -23,6 +23,6 @@
         <h2>ניהול ציונים</h2>
         <asp:Panel runat="server" ID="gradeLinks"></asp:Panel>
 
-        <p class="text" style="font-weight: bold;">לפי הנתונים שסיפקת\ה עד כה המגמה המתאימה לך היא: דוגמה</p>
+        <asp:Label runat="server" ID="lblResult"></asp:Label>
     </div>
 </asp:Content>

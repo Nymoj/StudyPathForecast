@@ -11,6 +11,7 @@
             <asp:Label runat="server" ID="errorMessage"></asp:Label>
             <asp:TextBox runat="server" ID="txtGrade" CssClass="roundInput"></asp:TextBox>
             <asp:Button runat="server" ID="btnSubmitGrade" Text="שלח ציון" CssClass="btnSubmit" OnClick="btnSubmitGrade_Click"/>
+            <asp:Label runat="server" ID="lblAvg"></asp:Label>
         </div>
 
         <asp:GridView runat="server" ID="gvGrades" AutoGenerateColumns="false" CssClass="table">

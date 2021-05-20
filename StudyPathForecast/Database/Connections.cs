@@ -236,6 +236,7 @@ namespace StudyPathForecast.Database
             updateGrades.Parameters.Add("@UserId", typeof(int));
             updateGrades.Parameters.Add("@Subject", typeof(string));
 
+            // Clearing the grades in the subject that weren't marked as studied
             if (!userData.Is5PointsMathStudent)
             {
                 updateGrades.Parameters["@UserID"].Value = userData.UserId;
@@ -272,6 +273,52 @@ namespace StudyPathForecast.Database
             }
 
             return true;
+        }
+
+        public static string CalculateGradeAvg(int userId, string subject)
+        {
+            //SqlCommand avgCmd = new SqlCommand("UpdateAvg", Connection);
+
+            //avgCmd.CommandType = CommandType.StoredProcedure;
+            
+            // Counting all the grades related to the subject
+            SqlCommand countGradesCmd = new SqlCommand("SELECT COUNT(*) FROM Grades WHERE UserID=@UserID AND Subject=@Subject;", Connection);
+            countGradesCmd.Parameters.AddWithValue("@UserID", userId);
+            countGradesCmd.Parameters.AddWithValue("@Subject", subject);
+            int count = (int)countGradesCmd.ExecuteScalar();
+
+            // Getting all the grades related to the subject
+            SqlCommand getGradesCmd = new SqlCommand("SELECT Grade FROM Grades WHERE UserID=@UserID AND Subject=@Subject;", Connection);
+            getGradesCmd.Parameters.AddWithValue("@UserID", userId);
+            getGradesCmd.Parameters.AddWithValue("@Subject", subject);
+            int sum = 0;
+
+            using (SqlDataReader dr = getGradesCmd.ExecuteReader())
+            {
+                // reading all records and summing the grades
+                while (dr.Read())
+                {
+                    sum += Convert.ToInt32(dr["Grade"]);
+                }
+            }
+
+            double avgInt = (double)sum / count;
+            // Stores whether the avg is Low, Normal or High (this will be stored in the db)
+            // The default value is "emtpy", in the case there are no grades yet
+            string avgStr = "ריק";
+
+            // Low(0 - 60) | Normal(60 - 80) | High(80 - 100)
+            if (avgInt >= 0 && avgInt < 60) avgStr = "נמוך";
+            if (avgInt >= 60 && avgInt < 80) avgStr = "בינוני";
+            if (avgInt >= 80 && avgInt <= 100) avgStr = "גבוה";
+
+            //avgCmd.Parameters.AddWithValue("@UserID", userId);
+            //avgCmd.Parameters.AddWithValue("@Subject", subject + "Avg");
+            //avgCmd.Parameters.AddWithValue("@Avg", avgStr);
+
+            //avgCmd.ExecuteNonQuery();
+
+            return  "הממוצע שלך " + avgStr;
         }
 
         #region Updating User's Data Methods

@@ -136,7 +136,6 @@
     <Compile Include="Database\Models\SubjectGradesHistory.cs" />
     <Compile Include="Database\Models\User.cs" />
     <Compile Include="Database\Models\UserData.cs" />
-    <Compile Include="ID3\Decision.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -147,8 +146,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ID3\DecisionQuery.cs" />
-    <Compile Include="ID3\DecisionResult.cs" />
     <Compile Include="ID3\CSID3Algorithm.cs" />
     <Compile Include="ID3\CSModel.cs" />
     <Compile Include="ID3\Node.cs" />

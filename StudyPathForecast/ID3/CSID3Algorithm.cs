@@ -10,97 +10,6 @@ namespace StudyPathForecast.ID3
 {
     public class CSID3Algorithm
     {
-        /*/// <summary>
-        /// Stores attributes as keys and its features as values
-        /// </summary>
-        private Dictionary<string, string[]> attributes = new Dictionary<string, string[]>() {
-            { "Is5PointsMathStudent", new string[] { "yes", "no" } },
-            { "Is4PointsMathStudent", new string[] { "yes", "no" } },
-            { "Is5PointsEnglishStudent", new string[] { "yes", "no" } },
-            { "Is4PointsEnglishStudent", new string[] { "yes", "no" } },
-            { "IsArtStudent", new string[] { "yes", "no" } },
-            { "IsPhysicsStudent", new string[] { "yes", "no" } },
-            { "ChosenPath", new string[] { "Biology", "Chemistry", "CS", "Physics" } },
-            //{ "AvgGrade", new string[] { "Low", "Normal", "High" } },
-        };
-
-        /// <summary>
-        /// Stores the target of the prediction, i.e. whether the student should learn Biology
-        /// </summary>
-        private string target;
-
-        public DecisionTreeBuilder(string target)
-        {
-            this.target = target;
-        }
-
-        public int GetPositiveFromDataset()
-        {
-            SqlCommand cmd = new SqlCommand("SELECT ChosenPath FROM UserData WHERE ChosenPath=@Target;", Connections.Connection);
-
-            cmd.Parameters.AddWithValue("@Target", target);
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-
-            da.Fill(dt);
-
-            return dt.Rows.Count;
-        }
-
-        public int GetNegativeFromDataset()
-        {
-            SqlCommand cmd = new SqlCommand("SELECT ChosenPath FROM UserData WHERE ChosenPath!=@Target OR ChosenPath IS NULL;", Connections.Connection);
-
-            cmd.Parameters.AddWithValue("@Target", target);
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-
-            da.Fill(dt);
-
-            return dt.Rows.Count;
-        }
-
-        public int GetPositiveFromDataset(string attribute)
-        {
-            SqlCommand cmd = new SqlCommand("SELECT ChosenPath FROM UserData WHERE ChosenPath=@Target AND;", Connections.Connection);
-
-            cmd.Parameters.AddWithValue("@Target", target);
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-
-            da.Fill(dt);
-
-            return dt.Rows.Count;
-        }
-
-        /// <summary>
-        /// Calculates entropy of the whole dataset
-        /// </summary>
-        /// <returns></returns>
-        public double FindEntropy()
-        {
-            double entropy = 0;
-
-            int p = GetPositiveFromDataset();
-            int n = GetNegativeFromDataset();
-            int sum = p + n;
-
-            double pfraction = (double)p / sum;
-            double nfraction = (double)n / sum;
-
-            entropy = -pfraction * Math.Log(pfraction, 2) - nfraction * Math.Log(nfraction, 2);
-
-            return entropy;
-        }
-
-        public double FindAttributeEntropy(string attribute)
-        {
-            return 0;
-        }*/
-
         public static Node Root { get; set; }
 
         public Node ID3(List<CSModel> rows, List<string> attributes, string branchLabel)
@@ -145,7 +54,7 @@ namespace StudyPathForecast.ID3
             int neg = rows.Count - pos;
             if (pos > neg) { return CSModel.Positive; }
             else if (neg > pos) { return CSModel.Negative; }
-            else { return String.Format("{0} and {1} Equally Likely", CSModel.Positive, CSModel.Negative); }
+            else { return String.Format("{0} ו{1} שווים בהסתברותם", CSModel.Positive, CSModel.Negative); }
 
         }
 
@@ -189,7 +98,7 @@ namespace StudyPathForecast.ID3
         /// <param name="set"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        private double Prob(List<CSModel> set, Func<CSModel, bool> predicate)
+        private double Fraction(List<CSModel> set, Func<CSModel, bool> predicate)
         {
             double tot = set.Where(x => predicate(x)).Count();
             double selection = set.Where(x => predicate(x) && CSModel.Success(x)).Count();
@@ -199,28 +108,35 @@ namespace StudyPathForecast.ID3
         private double Entropy(List<CSModel> set, Func<CSModel, bool> predicate)
         {
             // the fraction
-            double prob = Prob(set, predicate);
+            double fraction = Fraction(set, predicate);
             // final result, entropy
-            double e;
-            if (prob == 0) { e = 0; }
-            else if (prob == 1) { e = 0; }
+            double e = 0;
+
+            if (fraction == 0) { e = 0; }
+            else if (fraction == 1) { e = 0; }
             else
             {
-                e = e_vlad(prob);
+                e = EntropyExp(fraction);
             }
             return e;
         }
 
-        private double e_vlad(double prob)
+        /// <summary>
+        /// The expression to calculate entropy
+        /// </summary>
+        /// <param name="prob">The probability</param>
+        /// <returns></returns>
+        private double EntropyExp(double fraction)
         {
-            return (prob * Math.Log(1 / prob, 10)) + ((1 - prob) * Math.Log(1 / (1 - prob), 10));
+            return -(fraction * Math.Log(fraction, 2)) - ((1 - fraction) * Math.Log((1 - fraction), 2));
         }
 
-        /*private double e_internet(double prob)
-        {
-            return -(prob * Math.Log(prob, 2)) - ((1 - prob) * Math.Log((1 - prob), 2));
-        }*/
-
+        /// <summary>
+        /// Calculates the inforamtion gain of an attribute
+        /// </summary>
+        /// <param name="set">The set to be used</param>
+        /// <param name="attr">The attribute</param>
+        /// <returns></returns>
         private double Gain(List<CSModel> set, string attr)
         {
             double g = 0;
@@ -237,6 +153,14 @@ namespace StudyPathForecast.ID3
             return g;
         }
 
+        /// <summary>
+        /// Finds all values that are present in the set for the attribute
+        /// For example: Is5PointsMathStudent - will be the attribute and
+        /// "Yes" or "No" will be the possible values for the attribute
+        /// </summary>
+        /// <param name="set"></param>
+        /// <param name="attr"></param>
+        /// <returns></returns>
         private List<string> PossibleValues(List<CSModel> set, string attr)
         {
             List<string> values = new List<string>();

@@ -34,6 +34,8 @@ namespace StudyPathForecast.Stats.Grades
             }
 
             dr.Close();
+
+            lblAvg.Text = Connections.CalculateGradeAvg(user.Id, "Art");
         }
 
         protected void btnSubmitGrade_Click(object sender, EventArgs e)

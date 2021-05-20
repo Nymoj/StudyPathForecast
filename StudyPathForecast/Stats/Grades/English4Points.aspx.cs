@@ -34,6 +34,8 @@ namespace StudyPathForecast.Stats.Grades
             }
 
             dr.Close();
+
+            lblAvg.Text = Connections.CalculateGradeAvg(user.Id, "English4Points");
         }
 
         protected void btnSubmitGrade_Click(object sender, EventArgs e)

@@ -34,6 +34,8 @@ namespace StudyPathForecast.Stats.Grades
             }
 
             dr.Close();
+
+            lblAvg.Text = Connections.CalculateGradeAvg(user.Id, "Physics");
         }
 
         protected void btnSubmitGrade_Click(object sender, EventArgs e)
@@ -69,7 +71,7 @@ namespace StudyPathForecast.Stats.Grades
 
                 cmd.ExecuteNonQuery();
             }
-
+            
             txtGrade.Text = string.Empty;
             Response.Redirect("Physics.aspx", false);
         }
