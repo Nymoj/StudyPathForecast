@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="StudyPathForecast.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="he" dir="rtl">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - חיזוי מסלולים לימודיים</title>
+
+    <asp:PlaceHolder runat="server">
+        <!--<%: Scripts.Render("~/bundles/modernizr") %>-->
+    </asp:PlaceHolder>
+
+    <asp:ContentPlaceHolder runat="server" ID="head">
+
+    </asp:ContentPlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+</head>
+<body>
+    <form runat="server" id="mainForm">
+        <aside class="navbar">
+            <h2 id="projectName">
+                חיזוי<br />
+                מסלולים<br />
+                לימודיים<br />
+            </h2>
+
+            <nav>
+                <asp:Panel runat="server" ID="authenticatedMenu">
+                    <ul>
+                        <li><asp:HyperLink runat="server" NavigateUrl="~/Default.aspx">עמוד בית</asp:HyperLink></li>
+                        <li><asp:HyperLink runat="server" NavigateUrl="~/Profile/ViewProfile.aspx">פרופיל שלי</asp:HyperLink></li>
+                        <li><asp:HyperLink runat="server" NavigateUrl="~/Stats/Forecast.aspx">חיזוי</asp:HyperLink></li>
+                    </ul>
+                </asp:Panel>
+                <asp:Panel runat="server" ID="unauthenticatedMenu">
+                    <ul>
+                        <li><asp:HyperLink runat="server" NavigateUrl="~/Default.aspx">עמוד בית</asp:HyperLink></li>
+                        <li><asp:HyperLink runat="server" NavigateUrl="~/Login.aspx">כניסה</asp:HyperLink></li>
+                        <li><asp:HyperLink runat="server" NavigateUrl="~/Registration.aspx">הרשמה</asp:HyperLink></li>
+                    </ul>
+                </asp:Panel>
+            </nav>
+        </aside>
+        <div class="container">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

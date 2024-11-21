@@ -1,0 +1,66 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Alef&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    float: right;
+    padding: 0 100px;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+html, body, #mainForm {
+    height: 100%;
+    margin: 0;
+}
+
+.navbar {
+    float: right;
+    background: #111;
+    height: 100%;
+    padding: 30px 30px 0 100px;
+}
+
+#projectName {
+    font-size: 32px;
+    font-family: 'Arimo', sans-serif;
+    color: #fff;
+    letter-spacing: 3px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 30px 0;
+}
+
+nav ul li {
+    padding-top: 6px;
+    font-size: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+    transition: .5s all;
+}
+
+nav ul li a:hover {
+    color: aqua;
+    transition: .5s all;
+}
+
+@media (max-width: 850px) {
+    .navbar {
+        width: 100%;
+        height: auto;
+        float: none;
+    }
+}
